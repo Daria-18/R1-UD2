@@ -1,4 +1,4 @@
-package src.apartado1.ui;
+package apartado1.ui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package src.apartado1.model;
+package apartado1.model;
 
 import java.util.List;
 

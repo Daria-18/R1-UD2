@@ -1,8 +1,8 @@
-package src.apartado1.controller;
+package apartado1.controller;
 
-import src.apartado1.ui.VentanaAlumnos;
-import src.apartado1.model.IModeloAlumnos;
-import src.apartado1.model.ModeloAlumnosJDBC;
+import apartado1.ui.VentanaAlumnos;
+import apartado1.model.IModeloAlumnos;
+import apartado1.model.ModeloAlumnosJDBC;
 
 public class GestionAlumnos {
 

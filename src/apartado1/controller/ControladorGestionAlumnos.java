@@ -1,4 +1,4 @@
-package src.apartado1.controller;
+package apartado1.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,9 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import src.apartado1.model.Alumno;
-import src.apartado1.model.IModeloAlumnos;
-import src.apartado1.ui.VentanaAlumnos;
+import apartado1.model.Alumno;
+import apartado1.model.IModeloAlumnos;
+import apartado1.ui.VentanaAlumnos;
 
 public class ControladorGestionAlumnos  implements ActionListener, ListSelectionListener {
 
