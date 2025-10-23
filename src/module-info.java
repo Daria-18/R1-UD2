@@ -4,7 +4,7 @@
 /**
  * 
  */
-module reto1U2 {
+module src {
 	requires java.sql;
 	requires java.desktop;
 }
