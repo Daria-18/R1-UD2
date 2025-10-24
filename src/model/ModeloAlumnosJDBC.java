@@ -17,17 +17,49 @@ public class ModeloAlumnosJDBC implements IModeloAlumnos {
 	
 	Connection miConexion=null;
 	
-	public ModeloAlumnosJDBC() {
+	public ModeloAlumnosJDBC() throws SQLException {
 		try {
             miConexion = DriverManager.getConnection(cadenaConexion, user, pass);
             System.out.println("Conectado a la base de datos");
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());
-            e.printStackTrace();
+            crearBD();
+            //e.printStackTrace();
+            miConexion = DriverManager.getConnection(cadenaConexion, user, pass);
+            System.out.println("Conectado a la base de datos");
         }
 	}
-	
-	@Override
+
+    private void crearBD() throws SQLException {
+
+        String ruta2 = "jdbc:mysql://localhost:3306/";
+
+        Connection conexionCrear = DriverManager.getConnection(ruta2,user,pass);
+        Statement sqlCreate = conexionCrear.createStatement();
+
+        sqlCreate.execute("CREATE DATABASE IF NOT EXISTS adat");
+        System.out.println("Base creada: adat" );
+
+        Connection conexionTabla = DriverManager.getConnection(cadenaConexion, user, pass);
+        Statement sqlTabla = conexionTabla.createStatement();
+
+        String sqlAlumnos = """
+            CREATE TABLE IF NOT EXISTS Alumnos (
+                DNI VARCHAR(9) PRIMARY KEY,
+                nombre VARCHAR(50) NOT NULL,
+                apellido VARCHAR(50) NOT NULL,
+                CP VARCHAR(10)
+            )
+         """;
+
+        sqlTabla.execute(sqlAlumnos);
+        System.out.println("Tabla alumnos creada");
+
+    }
+
+
+
+    @Override
 	public List<String> getAll() {
 		List<String> lista = new ArrayList<>();
         String SQL = "SELECT * FROM Alumnos";

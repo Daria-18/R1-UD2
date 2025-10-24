@@ -1,11 +1,6 @@
 package Apartado4;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 
@@ -14,7 +9,19 @@ public class BaseMusica {
 	final String user="dam2";
 	final String contraseña="asdf.1234";
 	Connection miConexion=null;
-	
+
+    // Añadir metodo de conexion que cree la Base de Datos para que la estructura funcione correctamente
+    public void conectar() throws SQLException {
+        String ruta2 = "jdbc:mysql://localhost:3306/";
+
+        Connection conexionCrear = DriverManager.getConnection(ruta2,user,contraseña);
+        Statement sqlCreate = conexionCrear.createStatement();
+
+        sqlCreate.execute("CREATE DATABASE IF NOT EXISTS adat1");
+        System.out.println("Base creada: adat1" );
+
+    }
+
 	public void crearBase() {
 		String SQLCantante="CREATE TABLE IF NOT EXISTS Cantante("
 				+ "nombre VARCHAR(50) NOT NULL,"
